@@ -177,8 +177,8 @@ button {
 
 .help-btn {
   width: 30px; height: 30px; border-radius: 50%;
-  border: 1.5px solid var(--border); background: var(--white);
-  color: var(--text-muted); font-size: 14px; font-weight: 700;
+  border: 1.5px solid var(--border); background: var(--navy);
+  color: var(--white); font-size: 14px; font-weight: 700;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
   transition: all 0.18s;
 }

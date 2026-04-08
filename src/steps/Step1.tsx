@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Error from '../accessory/Error';
 import { validateStep1, type FormErrors } from '../utils/validation';
 
+//Define the rules of the step (types and function return types of each prop passed in)
 interface Step1Props {
   businessName: string;
   setBusinessName: (val: string) => void;
@@ -29,7 +30,7 @@ export default function Step1Business({
 }: Step1Props) {
   const [errors, setErrors] = useState<FormErrors>({});
 
-  // Clear a specific field's error as the user starts typing
+  //Feature that clears field error when user starts typing in the field
   const clearError = (field: string) => {
     setErrors((prev) => {
       if (!prev[field]) return prev;
@@ -39,12 +40,12 @@ export default function Step1Business({
     });
   };
 
+  //Handles all the error validation for step 1
   const handleNext = () => {
     const errs = validateStep1(businessName, ownerName, email, address);
 
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
-      // Scroll the first errored field into view
       const firstKey = Object.keys(errs)[0];
       document.getElementById(firstKey)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
@@ -76,7 +77,6 @@ export default function Step1Business({
         </div>
 
         <div className="frow">
-          {/* Business name is highlighted when rejected so the user knows exactly what to fix */}
           <div className={`fg ${isRejected ? 'highlight' : ''}`}>
             <label htmlFor="businessName">Business name</label>
             <input

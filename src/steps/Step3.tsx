@@ -1,4 +1,4 @@
-const PRICE = 350;
+const PRICE = 50;
 
 const PAY_LABEL: Record<string, string> = {
   visa: 'Visa',
@@ -7,7 +7,7 @@ const PAY_LABEL: Record<string, string> = {
   apple: 'Apple Pay',
 };
 
-// Show only the last 4 digits of the card number — full number is never displayed
+// Show only the last 4 digits of the card number —> full number is never displayed for secuirty
 function maskCard(num: string): string {
   const clean = num.replace(/\s/g, '');
   if (clean.length < 4) return '•••• •••• •••• ????';
@@ -69,7 +69,6 @@ export default function Step3Review({
             <span className="rev-k">Payment method</span>
             <span className="rev-v">{PAY_LABEL[paymentType] || paymentType}</span>
           </div>
-          {/* Card number is masked — only last 4 digits shown for reference */}
           <div className="rev-row">
             <span className="rev-k">Card number</span>
             <span className="rev-v masked">{maskCard(cardNumber)}</span>
@@ -82,7 +81,6 @@ export default function Step3Review({
             <span className="rev-k">Status</span>
             <span className="rev-v success-text">✓ Confirmed</span>
           </div>
-          {/* CVV and full card number are never shown — tracked internally only */}
         </section>
       </div>
 

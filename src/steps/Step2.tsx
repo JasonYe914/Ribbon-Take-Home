@@ -64,7 +64,7 @@ export default function Step2Payment({
     clearError('cardNumber');
   };
 
-  // Auto-insert slash after 2 digits for MM/YY format
+  // Auto-insert slash after 2 digits for MM/YY format --> make sure the card is not expired
   const handleExpiry = (e: React.ChangeEvent<HTMLInputElement>) => {
     let raw = e.target.value.replace(/\D/g, '');
     if (raw.length > 2) {
@@ -74,7 +74,7 @@ export default function Step2Payment({
     clearError('expiry');
   };
 
-  // CVV is digits only, 3–4 chars
+  // CVV is digits only, and is 3–4 chars
   const handleCvv = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.replace(/\D/g, '').slice(0, 4);
     setCvv(val);
@@ -107,7 +107,6 @@ export default function Step2Payment({
       )}
 
       <div className="pay-layout">
-        {/* LEFT: Payment form */}
         <div>
           <div style={{ marginBottom: '1.25rem' }}>
             <label style={{ display: 'block', marginBottom: '8px' }}>Payment type</label>
@@ -197,8 +196,6 @@ export default function Step2Payment({
             </div>
           )}
         </div>
-
-        {/* RIGHT: Order receipt */}
         <div className="order-box">
           <div className="order-head">Your order</div>
           <div className="orow">

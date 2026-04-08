@@ -8,32 +8,31 @@ import Step4Complete from './steps/Step4';
 import './App.css';
 
 export default function App() {
-  // Step tracking
+  //Step tracking
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
 
-  // Step 1 — business info
+  //Initial states for step 1 using useState to manage it
   const [businessName, setBusinessName] = useState('');
   const [ownerName, setOwnerName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
 
-  // Step 2 — payment
+  //Initial states for step 2
   const [paymentType, setPaymentType] = useState<'visa' | 'debit' | 'google' | 'apple'>('visa');
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvv, setCvv] = useState('');
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
 
-  // Rejection flow — first submit triggers rejection, second succeeds
+  //Rejection flow —> first submit triggers rejection, second succeeds
   const [isRejected, setIsRejected] = useState(false);
 
   const handleSubmitRegistration = () => {
     if (!isRejected) {
-      // First submit — simulate government rejection, send user back to fix business name
+      //make the first submission a rejection (go back to step 1)
       setIsRejected(true);
       setStep(1);
     } else {
-      // Second submit — success
       setIsRejected(false);
       setStep(4);
     }
@@ -45,7 +44,7 @@ export default function App() {
         <div className="header-left">
           <span className="logo-text">Ribbon Business</span>
           <div className="header-sep" />
-          <span className="header-sub">Business Registration</span>
+          <span className="header-sub">Sole Proprietor Business Registration</span>
         </div>
         <HelpButton />
       </header>

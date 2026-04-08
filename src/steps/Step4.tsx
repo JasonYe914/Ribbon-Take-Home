@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-// Generate a random reference number once on mount and never change it
+// Generate a random reference number once on mount and never change it for realism purposes
 function generateRef(): string {
   return 'RIB-' + Math.floor(100000 + Math.random() * 900000);
 }

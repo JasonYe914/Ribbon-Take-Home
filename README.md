@@ -38,6 +38,7 @@ No external UI libraries — all styling is plain CSS via `App.css`.
 ```bash
 # Clone the repo
 git clone https://github.com/JasonYe914/Ribbon-Take-Home.git
+cd Ribbon-Take-Home
 
 # Install dependencies
 npm install
